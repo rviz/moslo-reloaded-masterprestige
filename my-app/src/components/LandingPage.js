@@ -16,7 +16,7 @@ const HeroSection = ({
   title,
   children
 }) => (
-  <Card className='bg-transparent border-none shadow-none'>
+  <Card className='bg-transparent border-none shadow-none h-1/6 flex items-center justify-center m-8'>
     <CardContent className='flex flex-col items-center space-y-8'>
       <h1 className='text-4xl md:text-6xl font-bold text-white'>{title}</h1>
       {children}
@@ -31,7 +31,7 @@ const HeroImage = ({
   <img
     src={require('../assets/moslo.gif')}
     alt={alt}
-    className='rounded-lg shadow-lg w-full object-cover h-[480px]'
+    className='rounded-lg shadow-lg h-4/6 object-cover w-full'
   />
 )
 
@@ -42,21 +42,20 @@ export default function LandingPage () {
   }
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gradient-to-b from-primary from-30% to-primary-foreground'>
+    <div className='min-h-screen flex justify-center bg-gradient-to-b from-primary from-30% to-primary-foreground'>
       <main className='w-full max-w-4xl mx-auto px-4'>
-        <HeroSection title={CONTENT.title}>
+        <HeroSection title={CONTENT.title} >
+            <Button
+                onClick={handleRedirect}
+                className='bg-primary-foreground text-secondary hover:bg-secondary/90 transform transition-transform duration-200 hover:scale-105 p-5 rounded-full shadow-2xl text-3xl'
+            >
+                {CONTENT.buttonText}
+            </Button>
+        </HeroSection>
           <HeroImage
             src={CONTENT.imagePath}
             alt='Animated Content'
           />
-          <Button
-            onClick={handleRedirect}
-            size='4xl'
-            className='bg-secondary text-secondary-foreground hover:bg-secondary/90 transform transition-transform duration-200 hover:scale-105 p-5 rounded-full shadow-2xl'
-          >
-            {CONTENT.buttonText}
-          </Button>
-        </HeroSection>
       </main>
     </div>
   )

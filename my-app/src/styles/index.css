@@ -4,10 +4,9 @@
 
 :root {
   --primary: #452be0;;
-  --primary-foreground: #e2e8f0;
-  --secondary: #2563eb;
-  --secondary-foreground: #ffffff;
-  --mostla-color: #452be0;
+  --primary-foreground: #131314;
+  --secondary: #f4f4f4;
+  --secondary-foreground: #7a8386;
 }
 
 body {
