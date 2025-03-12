@@ -26,7 +26,7 @@ const HeroImage = ({
   alt
 }) => (
   <img
-    src={require('../assets/moslo.gif')}
+    src={require('../assets/download.gif')}
     alt={alt}
     className='rounded-lg shadow-lg h-4/6 object-cover w-fit'
   />
@@ -104,12 +104,7 @@ export default function LandingPage () {
 
         </div>
         <HeroImage alt='Mostla Logo' />
-        <div className='flex flex-row mt-8 justify-between'>
-          <img
-            src='IFE_CONFERENCE.png'
-            alt='Mostla Logo'
-            className='w-80'
-          />
+        <div className='flex flex-row mt-8 justify-center'>
           <div className='bg-white w-1/3 hidden'> </div>
           <img
             src='TEDU.png'
