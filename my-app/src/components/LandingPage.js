@@ -3,14 +3,10 @@ import { Card, CardContent } from '../components/ui/card.tsx'
 import { Button } from '../components/ui/button.tsx'
 
 const CONTENT = {
-  titleEN: 'Talos: Mostla Virtual Guide',
-  titleES: 'Talos: Guía Virtual de Mostla',
-  infoES: 'Conoce cómo hemos implementado el uso de la AI en la Educación y Proyectos de Investigación.',
-  infoEN: 'Learn how we have implemented the use of AI in Education and Research Projects.',
-  buttonTextEN: 'Start (EN)',
-  buttonTextES: 'Comenzar (ES)',
-  nextRouteES: 'https://ddna-mostla-tec-org1812--explorer.soului.dh.soulmachines.cloud/?sig=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzgwMjM4NjUsImlzcyI6InNpZ25lZF91cmwtNGQ2ODgzNTgtNmNjZC00ODkxLWI1YWQtNGE1MWI2YWVjYWNiIiwiZXhwIjoxODI0MzM3NDY1LCJlbWFpbCI6Im1vc3RsYS10ZWMtb3JnMTgxMi0tZXhwbG9yZXJAZGRuYS5zdHVkaW8iLCJzb3VsSWQiOiJkZG5hLW1vc3RsYS10ZWMtb3JnMTgxMi0tZXhwbG9yZXIifQ.NvRgDu4q3lgtPNaYZt5n9Ay34hSVvlyz3NRaYYIw_vc',
-  nextRouteEN: 'https://ddna-mostla-tec-org1812--talos-ia-eng.soului.dh.soulmachines.cloud/?sig=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzgwNDk2MTcsImlzcyI6InNpZ25lZF91cmwtMjZhZTQyZWMtMmVjOC00M2E4LTk3MDgtOTBhZDA2YjMxOWJiIiwiZXhwIjoxODI0MzYzMjE3LCJlbWFpbCI6Im1vc3RsYS10ZWMtb3JnMTgxMi0tdGFsb3MtaWEtZW5nQGRkbmEuc3R1ZGlvIiwic291bElkIjoiZGRuYS1tb3N0bGEtdGVjLW9yZzE4MTItLXRhbG9zLWlhLWVuZyJ9.JhCGmICzLRwq2UQxKbMzge68zEJCMArxY2taVTdQJAU'
+  title: 'Talos: Guía Virtual de Mostla',
+  info: 'Comienza para simular una entrevista con el asistente virtual de Mostla',
+  buttonText: 'Comenzar',
+  nextRoute: 'https://ddna-mostla-tec-org1812--entrevista-hiperreal.soului.dh.soulmachines.cloud/?sig=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDE4MTgwMjksImlzcyI6InNpZ25lZF91cmwtMDM0MzQ1ZWItZjMxZC00NDgzLTlkODgtNGQ1MmJkNDA3OWE5IiwiZXhwIjoxODI4MTMxNjI5LCJlbWFpbCI6Im1vc3RsYS10ZWMtb3JnMTgxMi0tZW50cmV2aXN0YS1oaXBlcnJlYWxAZGRuYS5zdHVkaW8iLCJzb3VsSWQiOiJkZG5hLW1vc3RsYS10ZWMtb3JnMTgxMi0tZW50cmV2aXN0YS1oaXBlcnJlYWwifQ.Syd0c5tgY71ep-gwGlgMp7i8MzTpETXn1NWPelcjK-8'
 }
 
 const HeroSection = ({ title, children }) => (
@@ -28,27 +24,19 @@ const HeroImage = ({
   <img
     src={require('../assets/download.gif')}
     alt={alt}
-    className='rounded-lg shadow-lg h-4/6 object-cover w-fit'
+    className='rounded-lg shadow-lg h-4/6 object-cover w-fit mx-auto'
   />
 )
 
 export default function LandingPage () {
-  const [isEnglish, setIsEnglish] = useState(false)
   const [timeLeft, setTimeLeft] = useState(null)
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsEnglish(prev => !prev)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
-
-  const handleRedirect = (lang) => {
+  const handleRedirect = () => {
     // Iniciar el timer
     setTimeLeft(300) // 5 minutos en segundos
 
     // Abre nueva pestaña con la URL correspondiente
-    const url = lang === 'en' ? CONTENT.nextRouteEN : CONTENT.nextRouteES
+    const url = CONTENT.nextRoute
     const newTab = window.open(url, '_blank')
 
     // Timer para cerrar la pestaña y recargar después de 5 minutos
@@ -69,7 +57,7 @@ export default function LandingPage () {
     const intervalId = setInterval(() => {
       setTimeLeft(prev => {
         const newTime = prev - 1
-        console.log(`Time remaining: ${Math.floor(newTime / 60)}:${(newTime % 60).toString().padStart(2, '0')}`)
+        console.log(`Tiempo restante: ${Math.floor(newTime / 60)}:${(newTime % 60).toString().padStart(2, '0')}`)
         return newTime
       })
     }, 1000)
@@ -81,23 +69,16 @@ export default function LandingPage () {
     <div className='min-h-screen flex justify-center bg-gradient-to-b from-primary from-30% to-primary-foreground mt-'>
       <main className='flex flex-col w-full max-w-4xl mt-8 px-4'>
       <div className='flex flex-col'>
-        <HeroSection title={isEnglish ? CONTENT.titleEN : CONTENT.titleES} >
+        <HeroSection title={CONTENT.title} >
           <p className='text-3xl text-secondary text-center'>
-            {isEnglish ? CONTENT.infoEN : CONTENT.infoES}
+            {CONTENT.info}
           </p>
           <div className='flex space-x-8'>
             <Button
-              onClick={() => handleRedirect('es')}
-              className='bg-secondary text-primary-foreground hover:bg-secondary/90 transform transition-transform duration-200 hover:scale-105 p-5 shadow-2xl text-3xl rounded-2xl'
+              onClick={handleRedirect}
+              className='bg-secondary text-primary-foreground hover:bg-secondary/90 transform transition-transform duration-200 hover:scale-105 p-5 shadow-2xl text-3xl rounded-2xl border-2 border-red-600'
             >
-              {CONTENT.buttonTextES}
-            </Button>
-            <div className='border-2'></div>
-            <Button
-              onClick={() => handleRedirect('en')}
-              className='bg-secondary text-primary-foreground hover:bg-secondary/90 transform transition-transform duration-200 hover:scale-105 p-5 shadow-2xl text-3xl rounded-2xl'
-            >
-              {CONTENT.buttonTextEN}
+              {CONTENT.buttonText}
             </Button>
           </div>
         </HeroSection>
