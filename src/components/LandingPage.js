@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Card, CardContent } from '../components/ui/card.tsx'
-import { Button } from '../components/ui/button.tsx'
+import { Card, CardContent } from './ui/card.tsx'
+import { Button } from './ui/button.tsx'
 
 const CONTENT = {
   title: 'Talos: Guía Virtual de Mostla',
