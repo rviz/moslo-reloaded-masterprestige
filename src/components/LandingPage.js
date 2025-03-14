@@ -85,12 +85,12 @@ export default function LandingPage () {
 
         </div>
         <HeroImage alt='Mostla Logo' />
-        <div className='flex flex-row mt-8 justify-center'>
+        <div className='flex flex-row mt-16 justify-center'>
           <div className='bg-white w-1/3 hidden'> </div>
           <img
             src='TEDU.png'
             alt='Mostla Logo'
-            className='w-96'
+            className='w-96 pb-28'
           />
         </div>
       </main>
